@@ -10,12 +10,6 @@ public class class138 {
       longValue = 8571598183286101587L
    )
    static long field2048;
-   @ObfuscatedName("dy")
-   @ObfuscatedGetter(
-      intValue = 1707259621
-   )
-   @Export("myWorldPort")
-   static int myWorldPort;
    @ObfuscatedName("ev")
    @ObfuscatedGetter(
       intValue = 1602829299

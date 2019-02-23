@@ -117,12 +117,10 @@ public class class45 extends WorldMapData {
          Client.isMembers = var0.method1683();
          World.method1724(var0.method1683());
       }
-
-      Projectile.host = var0.address;
+      
       Client.world = var0.id;
       Client.flags = var0.mask;
       class228.port1 = Client.socketType == 0?43594:var0.id + 40000;
       class243.port2 = Client.socketType == 0?443:var0.id + 50000;
-      class138.myWorldPort = class228.port1;
    }
 }

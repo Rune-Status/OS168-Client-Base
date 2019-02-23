@@ -8,9 +8,6 @@ import net.runelite.mapping.ObfuscatedSignature;
 @ObfuscatedName("cs")
 @Implements("Projectile")
 public final class Projectile extends Renderable {
-	   @ObfuscatedName("dt")
-	   @Export("host")
-	   static String host;
    @ObfuscatedName("kv")
    @ObfuscatedSignature(
       signature = "Lcm;"

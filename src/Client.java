@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
+
+import darkos.Config;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Hook;
 import net.runelite.mapping.Implements;
@@ -1490,7 +1492,6 @@ public final class Client extends GameEngine implements class302 {
       Renderable.method3051(new int[]{20, 260, 10000}, new int[]{1000, 100, 500});
       class228.port1 = socketType == 0?43594:world + 40000;
       class243.port2 = socketType == 0?443:world + 50000;
-      class138.myWorldPort = class228.port1;
       PlayerComposition.colorsToFind = class240.field2805;
       PlayerComposition.colorsToReplace = class240.field2800;
       BoundingBox2D.field246 = class240.field2801;
@@ -2894,7 +2895,6 @@ public final class Client extends GameEngine implements class302 {
 
             Region.regionLowMemory = false;
             lowMemory = false;
-            Projectile.host = this.getCodeBase().getHost();
             String var10 = class132.field1920.identifier;
             byte var6 = 0;
 
@@ -2952,7 +2952,7 @@ public final class Client extends GameEngine implements class302 {
          if(--field1046 + 1 <= 0) {
             try {
                if(js5State == 0) {
-                  GrandExchangeEvent.socket = GameEngine.taskManager.createSocket(Projectile.host, class138.myWorldPort);
+                  GrandExchangeEvent.socket = GameEngine.taskManager.createSocket(Config.host, Config.myWorldPort);
                   ++js5State;
                }
 
@@ -3022,11 +3022,6 @@ public final class Client extends GameEngine implements class302 {
       GrandExchangeEvent.socket = null;
       class3.rssocket = null;
       js5State = 0;
-      if(class228.port1 == class138.myWorldPort) {
-         class138.myWorldPort = class243.port2;
-      } else {
-         class138.myWorldPort = class228.port1;
-      }
 
       ++field902;
       if(field902 >= 2 && (var1 == 7 || var1 == 9)) {
@@ -3074,7 +3069,7 @@ public final class Client extends GameEngine implements class302 {
 
          if(loginState == 1) {
             if(Size.field364 == null) {
-               Size.field364 = GameEngine.taskManager.createSocket(Projectile.host, class138.myWorldPort);
+               Size.field364 = GameEngine.taskManager.createSocket(Config.host, Config.myWorldPort);
             }
 
             if(Size.field364.status == 2) {
@@ -3408,12 +3403,6 @@ public final class Client extends GameEngine implements class302 {
                   ++field983;
                   if(field983 > 2000) {
                      if(field905 < 1) {
-                        if(class228.port1 == class138.myWorldPort) {
-                           class138.myWorldPort = class243.port2;
-                        } else {
-                           class138.myWorldPort = class228.port1;
-                        }
-
                         ++field905;
                         loginState = 0;
                      } else {
@@ -3425,12 +3414,6 @@ public final class Client extends GameEngine implements class302 {
          }
       } catch (IOException var17) {
          if(field905 < 1) {
-            if(class138.myWorldPort == class228.port1) {
-               class138.myWorldPort = class243.port2;
-            } else {
-               class138.myWorldPort = class228.port1;
-            }
-
             ++field905;
             loginState = 0;
          } else {
