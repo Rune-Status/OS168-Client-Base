@@ -802,7 +802,7 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
    protected void error(String var1) {
       if(!this.hasErrored) {
          this.hasErrored = true;
-         System.out.println("error_game_" + var1);
+         System.out.println("error_game: " + var1);
 
          try {
             this.getAppletContext().showDocument(new URL(this.getCodeBase(), "error_game_" + var1 + ".ws"), "_self");

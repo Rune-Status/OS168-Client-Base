@@ -2847,7 +2847,7 @@ public final class Client extends GameEngine implements class302 {
                   default:
                      break;
                   case 4:
-                     world = Integer.parseInt(var5);
+                     world = Config.world;
                      break;
                   case 5:
                      if(var5.equalsIgnoreCase("true")) {
@@ -3036,7 +3036,7 @@ public final class Client extends GameEngine implements class302 {
          gameState = 1000;
       } else if(field902 >= 4) {
          if(gameState <= 5) {
-            this.error("js5connect");
+        	this.error("Could not connect to Server: "+Config.host+":"+Config.myWorldPort);
             gameState = 1000;
          } else {
             field1046 = 3000;
