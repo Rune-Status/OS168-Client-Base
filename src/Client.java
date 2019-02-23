@@ -2952,13 +2952,15 @@ public final class Client extends GameEngine implements class302 {
          if(--field1046 + 1 <= 0) {
             try {
                if(js5State == 0) {
+            	   System.out.println("[Initial Connection] Connecting to server socket.");
                   GrandExchangeEvent.socket = GameEngine.taskManager.createSocket(Config.host, Config.myWorldPort);
                   ++js5State;
                }
-
+               
                if(js5State == 1) {
+            	  System.out.println("[Initial Connection] Awaiting valid socket.");
                   if(GrandExchangeEvent.socket.status == 2) {
-                     this.error(-1);
+                	  this.error(-1);
                      return;
                   }
 
@@ -2968,6 +2970,7 @@ public final class Client extends GameEngine implements class302 {
                }
 
                if(js5State == 2) {
+            	   System.out.println("[Initial Connection] Sending client connection request");
                   if(field917) {
                      class3.rssocket = class64.method1119((Socket)GrandExchangeEvent.socket.value, 40000, 5000);
                   } else {
@@ -2978,18 +2981,20 @@ public final class Client extends GameEngine implements class302 {
                   var1.putByte(15);
                   var1.putInt(168);
                   class3.rssocket.vmethod3337(var1.payload, 0, 5);
+                  System.out.println("[Initial Connection] Sending payload of size: " + var1.payload.length);
                   ++js5State;
                   WorldMapData.field463 = class64.method1118();
                }
 
                if(js5State == 3) {
+            	  System.out.println("[Initial Connection] Awaiting connection request response");
                   if(class3.rssocket.vmethod3334() > 0 || !field917 && gameState <= 5) {
                      int var2 = class3.rssocket.vmethod3349();
                      if(var2 != 0) {
                         this.error(var2);
                         return;
                      }
-
+               	  System.out.println("[Initial Connection] Connection request accepted");
                      ++js5State;
                   } else if(class64.method1118() - WorldMapData.field463 > 30000L) {
                      this.error(-2);
@@ -2998,6 +3003,7 @@ public final class Client extends GameEngine implements class302 {
                }
 
                if(js5State == 4) {
+            	  System.out.println("[Initial Connection] Cleanup connection request");
                   ScriptEvent.method1143(class3.rssocket, gameState > 20);
                   GrandExchangeEvent.socket = null;
                   class3.rssocket = null;

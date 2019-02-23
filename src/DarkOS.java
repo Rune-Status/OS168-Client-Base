@@ -18,6 +18,7 @@ public class DarkOS {
 		osFrame.add(gameApplet);
 		osFrame.setVisible(true);
 		osFrame.requestFocus();
+		osFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 }
