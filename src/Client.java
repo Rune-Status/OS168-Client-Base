@@ -2894,7 +2894,7 @@ public final class Client extends GameEngine implements class302 {
 
             Region.regionLowMemory = false;
             lowMemory = false;
-            Config.host = this.getCodeBase().getHost();
+            Projectile.host = this.getCodeBase().getHost();
             String var10 = class132.field1920.identifier;
             byte var6 = 0;
 
